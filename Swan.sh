@@ -41,6 +41,8 @@ function install_node() {
     echo "选择需要安装的版本 1->512MiB 2->32GiB, 输入1或者2"
     read -r -p "请确认: " ver_response
 
+    rm -rf ~/swan/fetch.lock
+    
     case "$ver_response" in
         [1]) 
             echo "开始下载 512MiB 版本..."
