@@ -107,7 +107,7 @@ function main_menu() {
         echo "3. 初始化节点"
         echo "4. 创建钱包"
         echo "5. 导入钱包"
-        read -p "请输入选项（1-14）: " OPTION
+        read -p "请输入选项（1-5）: " OPTION
 
         case $OPTION in
         1) install_path ;;
