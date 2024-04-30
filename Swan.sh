@@ -58,7 +58,7 @@ function install_node() {
     esac
 
     cd $HOME
-    wget -O https://github.com/swanchain/go-computing-provider/releases/download/v0.4.6/computing-provider
+    wget -O computing-provider https://github.com/swanchain/go-computing-provider/releases/download/v0.4.6/computing-provider
     chmod +x computing-provider
 
     echo "节点数据下载完成"
