@@ -61,7 +61,7 @@ function install_node() {
     wget -O -N https://github.com/swanchain/go-computing-provider/releases/download/v0.4.6/computing-provider
     chmod +x computing-provider
 
-    echo "下载完成"
+    echo "节点数据下载完成"
 }
 
 function init_node() {
@@ -76,7 +76,7 @@ function init_node() {
 
     ./computing-provider init --multi-address=/ip4/$host_ip/tcp/$host_port --node-name=$node_name
 
-    echo "初始化完成"
+    echo "节点信息初始化完成"
 }
 
 function create_wallet() {
@@ -84,7 +84,7 @@ function create_wallet() {
 
     ./computing-provider wallet new
 
-    echo "创建完成，请妥善保存"
+    echo "钱包创建完成，请妥善保存"
 }
 
 function import_wallet() {
