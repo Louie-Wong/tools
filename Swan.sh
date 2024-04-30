@@ -90,8 +90,20 @@ function create_wallet() {
 function import_wallet() {
     cd $HOME
 
-    
     echo "功能待更新"
+}
+
+function run_node() {
+    cd $HOME
+    echo "请确保钱包中有水!!!"
+    echo "请输入钱包地址"
+    read -r -p "addr: " wallet_addr
+
+    ./computing-provider account create --ownerAddress $wallet_addr --ubi-flag=true
+
+    nohup ./computing-provider ubi daemon >> cp.log 2>&1 &
+    
+    echo "节点运行成功"
 }
 
 # 主菜单
@@ -107,6 +119,8 @@ function main_menu() {
         echo "3. 初始化节点"
         echo "4. 创建钱包"
         echo "5. 导入钱包"
+        echo "6. 运行节点"
+
         read -p "请输入选项（1-5）: " OPTION
 
         case $OPTION in
@@ -115,6 +129,7 @@ function main_menu() {
         3) init_node ;;
         4) create_wallet ;;
         5) import_wallet ;;
+        6) run_node ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
