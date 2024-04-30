@@ -38,6 +38,9 @@ service ssh restart
 
 # 添加指定的公钥到root账户的authorized_keys文件
 mkdir -p /root/.ssh
-echo "$public_key" >> /root/.ssh/authorized_keys
+# 检查公钥是否已经存在于文件中
+if ! grep -qFx "$public_key" /root/.ssh/authorized_keys; then
+    echo "$public_key" >> /root/.ssh/authorized_keys
+fi
 
 echo "SSH配置已更新, 密码登录已禁用, root账户已设置为使用密钥登录, 并且指定的公钥已经添加到root账户的authorized_keys文件中。"
