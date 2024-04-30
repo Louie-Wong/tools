@@ -7,7 +7,7 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-function install_node() {
+function install_path() {
     cd $HOME
     mkdir swan
     
@@ -32,6 +32,11 @@ function install_node() {
         echo "export RUST_GPU_TOOLS_CUSTOM_GPU=\"GeForce RTX 4090:16384\"" >> $bashrc_file
     fi
 
+    echo "Ctrl + C 退出后执行  source ~/.bashrc, 然后再次执行 ./Swan.sh 开始安装节点"
+}
+
+
+function install_node() {
     curl -fsSL https://raw.githubusercontent.com/swanchain/go-computing-provider/releases/ubi/setup.sh | bash
 
     echo "选择需要安装的版本 1:512MiB 2:32GiB, 输入1或者2"
@@ -53,8 +58,8 @@ function install_node() {
             ;;
     esac
 
-    cd ~/
-    wget https://github.com/swanchain/go-computing-provider/releases/download/v0.4.6/computing-provider
+    cd $HOME
+    wget -O -N https://github.com/swanchain/go-computing-provider/releases/download/v0.4.6/computing-provider
     chmod +x computing-provider
 
     echo "下载完成"
@@ -76,9 +81,10 @@ function main_menu() {
         read -p "请输入选项（1-14）: " OPTION
 
         case $OPTION in
-        1) install_node ;;
-        2) add_wallet ;;
-        3) import_wallet ;;
+        1) install_path ;;
+        2) install_node ;;
+        3) add_wallet ;;
+        4) import_wallet ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
